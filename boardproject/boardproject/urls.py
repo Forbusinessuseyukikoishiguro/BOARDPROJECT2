@@ -17,7 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include  # include関数をインポート追加
 
+
+
+
+
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('boardapp.urls'))
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
