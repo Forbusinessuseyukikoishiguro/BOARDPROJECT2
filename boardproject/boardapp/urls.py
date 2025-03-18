@@ -16,9 +16,10 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import signupfunc, loginfunc
+from .views import signupfunc, loginfunc,listfunc  # listfunc をここに追加
 
 urlpatterns = [
     path('signup/', signupfunc),
-    path('login/',loginfunc)
+    path('login/',loginfunc),
+    path('list/',listfunc, name='list')
 ]

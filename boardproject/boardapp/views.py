@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.db import IntegrityError  # この行を追加
 from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect
 
 # Create your views here.
 
@@ -14,7 +15,7 @@ def signupfunc(request):
             user = User.objects.create_user(username, '', password)
         except IntegrityError:
             return render(request, 'login.html', {'error': 'このユーザーは既に登録されています！'})
-    return render(request, 'login.html', {'some': 100})
+    return render(request, 'signup.html', {'some': 100})
 
 def loginfunc(request):
     if request.method == "POST":
@@ -29,3 +30,6 @@ def loginfunc(request):
             return render(request, 'login.html', {'context': 'not logged in'})
     
     return render(request, 'login.html', {'context': 'get method'}) 
+
+def listfunc(request):
+    return render(request,'list.html',{})
