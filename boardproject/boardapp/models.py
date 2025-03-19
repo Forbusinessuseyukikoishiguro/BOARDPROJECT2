@@ -7,6 +7,6 @@ class BoardModel(models.Model):  # models.Modelを継承する必要がありま
     content = models.TextField()
     author = models.CharField(max_length=100)  # 'charField'ではなく'CharField'が正しい
     snsimage = models.ImageField(upload_to='')
-    good = models.IntegerField()  # デフォルト値を設定すると便利
+    good = models.IntegerField(default=0)  # このフィールドが必要
     read = models.IntegerField()  # デフォルト値を設定すると便利
     readtext = models.TextField()  # 空を許可する場合はblank=Trueを指定

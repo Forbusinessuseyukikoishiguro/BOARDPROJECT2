@@ -48,3 +48,12 @@ def logoutfunc(request):
 def detailfunc(request, pk):
     object = get_object_or_404(BoardModel, pk=pk)
     return render(request, 'detail.html', {'object': object})
+
+def goodfunc(request, pk):
+    object = get_object_or_404(BoardModel, pk=pk)
+    if object.good is None:
+        object.good = 1
+    else:
+        object.good += 1
+    object.save()
+    return redirect('list')
