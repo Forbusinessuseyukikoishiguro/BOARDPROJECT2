@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 from .models import BoardModel  # ドットの後にスペースを削除
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def signupfunc(request):
@@ -44,3 +45,6 @@ def logoutfunc(request):
     logout(request)
     return redirect('login')
 
+def detailfunc(request, pk):
+    object = get_object_or_404(BoardModel, pk=pk)
+    return render(request, 'detail.html', {'object': object})
