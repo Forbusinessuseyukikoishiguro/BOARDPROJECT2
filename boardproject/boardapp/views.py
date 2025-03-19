@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect
 from .models import BoardModel  # ドットの後にスペースを削除
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth import logout
 # Create your views here.
 
 def signupfunc(request):
@@ -34,7 +34,13 @@ def loginfunc(request):
     
     return render(request, 'login.html')
 
-@login_required
+
 def listfunc(request):
     object_list = BoardModel.objects.all()  # 'object' から 'objects' に修正（重要）
     return render(request, 'list.html', {'object_list': object_list})
+
+
+def logoutfunc(request):
+    logout(request)
+    return redirect('login')
+
