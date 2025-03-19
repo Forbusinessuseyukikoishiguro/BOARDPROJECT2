@@ -7,6 +7,8 @@ from .models import BoardModel  # ドットの後にスペースを削除
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
 # Create your views here.
 
 def signupfunc(request):
@@ -70,3 +72,9 @@ def readfunc(request, pk):
         object.save()
         return redirect('list')
     
+    
+class BoardCreate(CreateView):
+    template_name = 'create.html'  # 'boardapp/create.html'から変更
+    model = BoardModel
+    fields = ('title', 'content', 'author', 'snsimage')
+    success_url = reverse_lazy('list')
