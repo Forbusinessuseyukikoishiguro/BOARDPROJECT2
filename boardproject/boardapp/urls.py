@@ -19,7 +19,7 @@ from django.urls import path
 from .views import signupfunc, loginfunc,listfunc  # listfunc をここに追加
 
 urlpatterns = [
-    path('signup/', signupfunc),
-    path('login/',loginfunc),
+    path('signup/', signupfunc, name='signup'),
+    path('login/', loginfunc, name='login'),
     path('list/',listfunc, name='list')
 ]
